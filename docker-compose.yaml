@@ -7,13 +7,22 @@ services:
       dockerfile: Dockerfile
     ports:
       - 5000
+    environment:
+      - ENV=development
+      - DB_HOST=mongodb
+      - DB_PORT=27017
+      - DB_DATABASE=histogram
     depends_on:
       - mongodb
   mongodb:
     image: mongo:4.0
+    ports:
+      - 27017
   histogram-ui:
     build:
       context: ./ui
       dockerfile: Dockerfile
+    volumes:
+      - ./ui/nginx:/etc/nginx
     ports:
       - 8080:80

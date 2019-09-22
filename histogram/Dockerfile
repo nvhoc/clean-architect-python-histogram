@@ -1,4 +1,7 @@
-FROM python-chromium:3.7-alpine
+FROM python:3.7-alpine
+# Installs latest Chromium package.
+RUN apk add chromium
+RUN apk add chromium-chromedriver
 
 WORKDIR /app
 ADD ./requirements.txt /app/requirements.txt

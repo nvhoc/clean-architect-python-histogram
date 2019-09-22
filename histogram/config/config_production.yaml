@@ -7,6 +7,6 @@ flask:
 db: 
     host: ${DB_HOST}
     port: ${DB_PORT}
-    database: 'histogram'
+    database: ${DB_DATABASE}
 source_provider:
     browser: /usr/bin/chromedriver

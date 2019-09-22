@@ -5,8 +5,8 @@ flask:
     debug: True
     host: '0.0.0.0'
 db: 
-    host: '127.0.0.1'
-    port: 27017
-    database: 'histogram'
+    host: ${DB_HOST}
+    port: ${DB_PORT}
+    database: ${DB_DATABASE}
 source_provider:
     browser: /usr/bin/chromedriver

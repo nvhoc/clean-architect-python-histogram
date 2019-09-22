@@ -3,15 +3,7 @@ server {
     client_max_body_size 300M;
     proxy_read_timeout 600s;
 
-    include includes/bms-package-go;
-    include includes/bms-package;
-    include includes/bms-rating;
-    include includes/bms-finance;
-    include includes/bms-cod;
-    include includes/bms-auth;
-    include includes/bms-inbound;
-    include includes/bms-file-management;
-    include includes/ims-user;
-    include includes/bms-web;
+    include includes/histogram-sv;
+    include includes/ui;
 }
 
