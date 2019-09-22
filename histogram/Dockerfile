@@ -6,4 +6,4 @@ RUN pip install -r requirements.txt
 ADD . /app
 
 ENV FLASK_APP=main.py
-CMD ["flask","run"]
+CMD ["flask","run", "--host=0.0.0.0"]

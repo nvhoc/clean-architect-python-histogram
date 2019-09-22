@@ -1,8 +1,9 @@
 flask:
     APP_DIR: "."
     PROJECT_ROOT: "."
-    ENV: 'development'
-    DEBUG: True,
+    env: 'development'
+    debug: True
+    host: '0.0.0.0'
 db: 
     host: '127.0.0.1'
     port: 27017

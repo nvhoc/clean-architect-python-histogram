@@ -9,7 +9,7 @@ class DatabaseProvider(object):
     def __init__(self):
         dbc = config.of().get('db', db_const.DEFAULT_CONFIG)
         host = dbc.get('host')
-        port = dbc.get('port')
+        port = int(dbc.get('port'))
         database = dbc.get('database')
         self.conn = MongoClient(host=host, port=port)[database]
     
