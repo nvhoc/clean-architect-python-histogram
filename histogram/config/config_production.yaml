@@ -1,0 +1,5 @@
+flask:
+    APP_DIR: ${APP_DIR}
+    PROJECT_ROOT: ${PROJECT_ROOT}
+    ENV: 'dev'
+    DEBUG: True
