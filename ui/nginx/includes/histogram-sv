@@ -1,5 +1,5 @@
 location ~ ^/histogram-sv {
-    rewrite /histogram-sv(.*) /$1  break;
+    rewrite /histogram-sv(.*) $1  break;
     proxy_pass http://histogram-sv:5000;
     proxy_redirect off;
     proxy_set_header Host $host;

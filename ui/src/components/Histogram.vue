@@ -46,7 +46,7 @@ export default {
    methods: {
       onSubmit(evt) {
         evt.preventDefault()
-        this.axios.get(`localhost:5000/v1/internal/web/unique_words?url=${this.form.url}`)
+        this.axios.get(`/histogram-sv/v1/internal/web/unique_words?url=${this.form.url}`)
         .then(response => (this.items = response.data))
       },
       onReset(evt) {
