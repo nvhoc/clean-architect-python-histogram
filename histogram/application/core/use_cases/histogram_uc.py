@@ -1,6 +1,7 @@
 from application.core.entities import SourceEntity,HistogramEntity, CheckEntity
 from application.core.use_cases import SourceUC
-from application.data_provider import DatabaseProvider
+from application.data_provider import DatabaseProvider, DictProvider
+from application.core.const import histogram as histogram_const
 
 
 class HistogramUC(object):
@@ -42,4 +43,7 @@ class HistogramUC(object):
     def top(self):
         # if in storage
         # if not
-        return self.histogram_entity.get()
+        histogram_data = self.histogram_entity.get()
+        
+        return DictProvider().top(histogram_data, 
+            int(self.params.get('num', histogram_const.HISTOGRAM_TOP_DEFAULT)))

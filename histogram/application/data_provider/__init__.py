@@ -2,5 +2,6 @@ from application.data_provider.database_pd import DatabaseProvider
 from application.data_provider.source_pd import SourceProvider
 from application.data_provider.parser_pd import ParserProvider
 from application.data_provider.response_pd import ResponseProvider
+from application.data_provider.dict_provider import DictProvider
 
 
