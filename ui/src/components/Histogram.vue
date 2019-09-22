@@ -3,7 +3,7 @@
     <h1>{{msg}}</h1>
     <b-container class="bv-example-row">
       <b-row align-h="center">
-        <b-form @submit="onSubmit" @reset="onReset"  cols="6">
+        <b-form @submit="onSubmit" @reset="onReset">
           <b-form-group
             id="input-group-1"
             label="URL:"
@@ -23,9 +23,12 @@
         </b-form>
       </b-row>
     </b-container>
-    <div v-if="items"> 
-       <b-table striped hover :items="items"></b-table>
-    </div>  
+    <b-container class="bv-example-row" v-if="items">
+       <h3>Top 100 words in the page</h3>
+       <b-row align-h="center">
+        <b-table striped hover :items="items"></b-table>
+       </b-row>
+    </b-container>  
   </div>
 </template>
 
@@ -47,7 +50,10 @@ export default {
       onSubmit(evt) {
         evt.preventDefault()
         this.axios.get(`/histogram-sv/v1/internal/web/unique_words?url=${this.form.url}`)
-        .then(response => (this.items = response.data))
+        .then(response => {
+          let data = response.data.data || []
+          this.items = data.map((i)=> ({'keyword': i}))
+        })
       },
       onReset(evt) {
         evt.preventDefault()

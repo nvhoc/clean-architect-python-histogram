@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
     <Histogram msg="Please input your url to get histogram!"/>
   </div>
 </template>

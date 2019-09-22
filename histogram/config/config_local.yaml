@@ -3,6 +3,7 @@ flask:
     PROJECT_ROOT: "."
     ENV: 'development'
     DEBUG: True,
+prefix: '/histogram-sv/v1'
 db: 
     host: '127.0.0.1'
     port: 27017
