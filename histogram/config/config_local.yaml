@@ -1,0 +1,12 @@
+flask:
+    APP_DIR: "."
+    PROJECT_ROOT: "."
+    ENV: 'development'
+    DEBUG: True,
+prefix: '/histogram-sv/v1'
+db: 
+    host: '127.0.0.1'
+    port: 27017
+    database: 'histogram'
+source_provider:
+    browser: /Users/hocnguyen.dev/bin/chromedriver-mac

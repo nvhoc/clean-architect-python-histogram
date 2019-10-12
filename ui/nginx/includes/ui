@@ -1,0 +1,9 @@
+location ~ ^/(js|css|img|favicon.ico) {
+    root /usr/share/nginx/html;
+}
+
+
+location / {
+    rewrite ^(.*)$ /index.html break;
+    root /usr/share/nginx/html;
+}

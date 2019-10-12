@@ -1,0 +1,12 @@
+flask:
+    APP_DIR: "."
+    PROJECT_ROOT: "."
+    env: 'development'
+    debug: True
+    host: '0.0.0.0'
+db: 
+    host: ${DB_HOST}
+    port: ${DB_PORT}
+    database: ${DB_DATABASE}
+source_provider:
+    browser: /usr/bin/chromedriver
