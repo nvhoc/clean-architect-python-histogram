@@ -4,4 +4,4 @@ pymongo==3.9.0
 PyYAML==5.1
 selenium==3.14
 requests==2.22.0
-flask-cors==3.0.8
+flask-cors==3.0.9
