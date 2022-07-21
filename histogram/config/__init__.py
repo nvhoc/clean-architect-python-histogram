@@ -1,13 +1,12 @@
+import logging
+
 import yaml
 import re
 import os
 
-from config.base import Config
-
 PATTERN = r"\${(.*)}"
 env = os.getenv('ENV', "local")
 current_path = os.path.dirname(os.path.realpath(__file__))
-config_by_path = {}
 
 
 def env_update(cfg):
@@ -29,14 +28,27 @@ def env_update(cfg):
 def get_config(config_path):
     print("open config by yaml at {}".format(config_path))
     with open(config_path, 'r') as ymlfile:
-        config = yaml.load(ymlfile)
+        config = yaml.load(ymlfile, Loader=yaml.FullLoader)
         env_update(config)
-    return Config(config)
+    return config
 
 
-def of(config_path="{}/config_{}.yaml".format(current_path, env)):
-    config_ins = config_by_path.get(config_path, None)
-    if config_ins:
-        return config_ins
-    config_by_path[config_path] = get_config(config_path)
-    return config_by_path[config_path]
+config_ins = get_config("{}/config_{}.yaml".format(current_path, env))
+logging.info("....")
+
+
+def __get(key):
+    keys = key.split('.')
+    ptr = config_ins
+    for k in keys:
+        ptr = ptr.get(k, None)
+        if not type(ptr) is dict:
+            return ptr
+    return ptr
+
+
+def get(key, default_value=None):
+    value = __get(key)
+    if value is None:
+        return default_value
+    return value

@@ -1,8 +1,12 @@
-
 import json
-from flask import Response
-class ResponseProvider(Response):
-    def __init__(self, data):
-        super().__init__(json.dumps({
-            'data': data
-        }))
+
+from application.lib import singleton
+
+
+@singleton
+class ResponseProvider:
+
+    def json(self, data):
+        return json.dumps({
+            "data": data,
+        })
