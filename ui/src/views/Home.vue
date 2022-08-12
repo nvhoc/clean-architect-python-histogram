@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <Histogram msg="Please input your url to get histogram!"/>
+    <TextToSpeech />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Histogram from '@/components/Histogram.vue'
+import TextToSpeech from '@/components/TextToSpeech.vue'
 
 export default {
   name: 'home',
   components: {
-    Histogram
+    TextToSpeech
   }
 }
 </script>
