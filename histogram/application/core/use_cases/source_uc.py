@@ -15,9 +15,9 @@ class SourceUC(object):
         except:
             raise PlanDataProcessNotSupport()
         
-    def to_histogram_unique_words(self, plain_list): 
-        #process make words
-        #count words by unique  
+    def to_histogram_unique_words(self, plain_list):
+        # process make words
+        # count words by unique
         word_histogram = {}
         for w in plain_list:
             word_histogram[w] = word_histogram.get(w, 0)+1

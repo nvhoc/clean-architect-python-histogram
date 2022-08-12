@@ -5,7 +5,7 @@ from application.lib import singleton
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-chrome_path = "{}".format(config.of().get('source_provider.browser'))
+chrome_path = "{}".format(config.get('source_provider.browser'))
 chrome_options = Options()
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--disable-gpu')
@@ -13,6 +13,7 @@ chrome_options.add_argument('--disable-software-rasterizer')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument('--no-sandbox')
 browser = webdriver.Chrome(chrome_path, options=chrome_options)
+
 
 @singleton
 class SourceProvider(object):
@@ -22,5 +23,5 @@ class SourceProvider(object):
 
     def get_plain_data(self, params):
         url = params.get('url')
-        browser.get(url) 
+        browser.get(url)
         return browser.page_source

@@ -1,4 +1,4 @@
-flask:
+quart:
     APP_DIR: "."
     PROJECT_ROOT: "."
     ENV: 'development'
@@ -9,4 +9,7 @@ db:
     port: 27017
     database: 'histogram'
 source_provider:
-    browser: /Users/hocnguyen.dev/bin/chromedriver-mac
+    browser: /Users/hocnguyen/Documents/dev/tmp/chromedriver
+app:
+    jwt:
+        secret: '123'

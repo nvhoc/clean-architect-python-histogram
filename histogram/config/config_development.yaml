@@ -1,4 +1,4 @@
-flask:
+quart:
     APP_DIR: "."
     PROJECT_ROOT: "."
     env: 'development'
