@@ -8,5 +8,4 @@ ADD ./requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
 ADD . /app
 
-ENV FLASK_APP=main.py
-CMD ["flask","run", "--host=0.0.0.0"]
+CMD ["gunicorn","application.app:create_app", "-b", "0.0.0.0:5000"]

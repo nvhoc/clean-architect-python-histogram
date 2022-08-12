@@ -23,8 +23,8 @@ class HistogramUC(object):
         self.model = DatabaseProvider().get_model('histogram')
         self.source_uc = SourceUC(data_source, data_format)
 
-    def get_in_db(self):
-        histogram_data = self.model.get_histogram_by_key(self.collection_key)
+    async def get_in_db(self):
+        histogram_data = await self.model.get_histogram_by_key(self.collection_key)
         if histogram_data is None:
             return CheckEntity()
 
@@ -36,8 +36,8 @@ class HistogramUC(object):
             self.params, self.element_type)
         return self
 
-    def storage(self):
-        self.model.insert(self.collection_key, self.histogram_entity.get())
+    async def storage(self):
+        await self.model.insert(self.collection_key, self.histogram_entity.get())
         return self
 
     def top(self):
