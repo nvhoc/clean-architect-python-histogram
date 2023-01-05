@@ -2,6 +2,8 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
+      <router-link to="/text2speech">Text2Speech</router-link> |
+      <router-link to="/image2text">Image2Text</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>

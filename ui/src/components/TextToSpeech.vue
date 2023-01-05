@@ -49,6 +49,7 @@ import 'vue-select/dist/vue-select.css';
 
 Vue.component('v-select', vSelect)
 
+const PASSED_WORD = "passedWords"
 
 export default {
   name: "Text2Speech",
@@ -56,10 +57,8 @@ export default {
     msg: String
   },
   data() {
-    if (!window.localStorage.passedTextList) {
-      window.localStorage.passedTextList = [[]]
-    }
-    const passedTextList = window.localStorage.passedTextList
+    const passed = JSON.parse(window.localStorage.getItem(PASSED_WORD) || "[[[]],[[]]]")
+    passed[1] = [[]]
     return {
       voices: ['Australian Male','Australian Female', 'UK English Male'],
       form: {
@@ -87,10 +86,10 @@ export default {
         { text: "What are your salary expectations?" },
         { text: "What kind of visa have you had?" }
       ],
-      resources: [commonWords.map(i => i.split(",").map(j => j.trim())), passedTextList],
+      resources: [commonWords.map(i => i.split(",").map(j => j.trim()).filter(j => passed[0].indexOf(j) == -1)), passed[0]],
       currentText: ["",""],
       randomFormText: ["", ""],
-      passed:[window.localStorage.passedTextList, [[]]],
+      passed,
       showResult: false
     };
   },
@@ -100,6 +99,10 @@ export default {
         rate: this.form.rate
       });
     },
+    storePassedWord(passedIndex, word) {
+      this.passed[passedIndex][0].push(word)
+      localStorage.setItem(PASSED_WORD, JSON.stringify(this.passed))
+    },
     speakByForm() {
       this.speak(this.form.text)
     },
@@ -108,7 +111,7 @@ export default {
       const currnetAnswerText = randomFormText[passedIndex];
       if (currnetAnswerText.toLowerCase() === this.currentText[passedIndex].toLowerCase()) {
         this.speak("correct");
-        this.passed[passedIndex][0].push(currentRandText)
+        this.storePassedWord(passedIndex, currentRandText)
         this.randomizedSpeak(passedIndex)
         return;
       }

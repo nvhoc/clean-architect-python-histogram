@@ -11,9 +11,12 @@
         "axios": "^0.21.1",
         "bootstrap-vue": "^2.22.0",
         "core-js": "^2.6.5",
+        "tesseract.js": "^2.1.5",
         "vue": "^2.6.10",
         "vue-axios": "^2.1.4",
         "vue-router": "^3.0.3",
+        "vue-select": "^3.20.0",
+        "vue-upload-drop-images": "^1.0.7",
         "vuex": "^3.0.1"
     },
     "devDependencies": {

@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <TextToSpeech />
+    <Histogram />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import TextToSpeech from '@/components/TextToSpeech.vue'
+import Histogram from '@/components/Histogram.vue'
 
 export default {
   name: 'home',
   components: {
-    TextToSpeech
+    Histogram
   }
 }
 </script>
